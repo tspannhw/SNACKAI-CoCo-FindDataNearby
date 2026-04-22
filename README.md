@@ -2,6 +2,10 @@
 
 Find geospatial data in Snowflake and external sources. Browse databases, views, semantic views, run queries, and chat with Cortex AI — all from a React dashboard, CLI, REST API, or MCP server.
 
+
+<img width="2492" height="1247" alt="finddatanearby" src="https://github.com/user-attachments/assets/ffd1bec0-e506-4ce6-9e18-959f5bc61fc1" />
+
+
 ## Architecture
 
 ```
@@ -9,27 +13,27 @@ Find geospatial data in Snowflake and external sources. Browse databases, views,
 │  React App  │───▶│  Flask API   │───▶│  Snowflake               │
 │  (Vite 6)   │    │  (port 5001) │    │  ├─ UDTFs (geo search)   │
 └─────────────┘    └──────┬───────┘    │  ├─ Cortex AI (LLM)      │
-                          │            │  └─ Semantic Views        │
+                          │            │  └─ Semantic Views       │
 ┌─────────────┐           │            └──────────────────────────┘
 │  CLI Tool   │───────────┘                       │
 └─────────────┘           │            ┌──────────┴───────────────┐
                           ▼            │  External                │
-┌─────────────┐    ┌──────────────┐    │  ├─ Nominatim/OSM       │
-│  MCP Server │───▶│  Snowflake   │    │  └─ OpenAddress (564M)  │
+┌─────────────┐    ┌──────────────┐    │  ├─ Nominatim/OSM        │
+│  MCP Server │───▶│  Snowflake   │    │  └─ OpenAddress (564M)   │
 │  (stdio)    │    │  Connector   │    └──────────────────────────┘
 └─────────────┘    └──────────────┘
 ```
 
 ## Components
 
-| Component | Path | Description |
-|-----------|------|-------------|
-| SQL Objects | `sql/` | Database, UDTFs, Cortex agent procedure |
-| REST API | `api/` | Flask server with 11 endpoints |
-| Frontend | `frontend/` | React 19 + Leaflet map dashboard |
-| CLI | `cli/` | 7-subcommand terminal tool |
-| MCP Server | `mcp/` | JSON-RPC over stdin/stdout, 7 tools |
-| Management | `manage.sh` | Install, start, stop, test, validate, backup |
+| Component    | Path        | Description                                  |
+|--------------|-------------|----------------------------------------------|
+| SQL Objects  | `sql/`      | Database, UDTFs, Cortex agent procedure      |
+| REST API     | `api/`      | Flask server with 11 endpoints               |
+| Frontend     | `frontend/` | React 19 + Leaflet map dashboard             |
+| CLI          | `cli/`      | 7-subcommand terminal tool                   |
+| MCP Server   | `mcp/`      | JSON-RPC over stdin/stdout, 7 tools          |
+| Management   | `manage.sh` | Install, start, stop, test, validate, backup |
 
 ## Prerequisites
 
@@ -66,9 +70,9 @@ The dashboard opens at `http://localhost:5173`. The API runs at `http://localhos
 
 All objects live in `ANALYTICS_DEV_DB.STAGING`:
 
-| Object | Type | Description |
-|--------|------|-------------|
-| `search_history` | Table | Logged searches |
+| Object                                      | Type | Description |
+|---------------------------------------------|------|-------------|
+| `search_history`                            | Table | Logged searches |
 | `cached_locations` | Table | Geocoding cache |
 | `search_nearby_zip_codes(lat, lon, radius)` | UDTF | Find zip codes within radius (meters) |
 | `search_nearby_addresses(lat, lon, radius, limit)` | UDTF | Find street addresses within radius |
