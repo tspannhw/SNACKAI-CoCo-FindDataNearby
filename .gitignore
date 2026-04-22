@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+env.sh
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Credentials & Secrets - NEVER commit these
+*.pem
+*.p8
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+.env
+.env.*
+!.env.example
+credentials.json
+secrets.json
+snowflake_creds.json
+rsa_key.p8
+rsa_key.pub
+
+# Snowflake connection config (may contain tokens)
+connections.toml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Backup
+backups/
+
+# PID files (manage.sh runtime)
+.pids/
+
+# OS
+Thumbs.db
+.DS_Store
